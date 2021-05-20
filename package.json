@@ -1,5 +1,5 @@
 {
-  "name": "indecision-app",
+  "name": "expensify-app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Steven Quach",
@@ -7,10 +7,8 @@
   "scripts": {
     "serve": "live-server public/",
     "build:dev": "webpack",
-    "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
-    "heroku-postbuild": "yarn run build:prod",
-    "start": "node server/server.js"
+    "test": "jest --config=jest.config.json"
   },
   "dependencies": {
     "babel-core": "6.25.0",
@@ -21,11 +19,19 @@
     "babel-preset-react": "6.24.1",
     "css-loader": "0.28.4",
     "dart-sass": "^1.25.0",
+    "enzyme": "3.0.0",
+    "enzyme-adapter-react-16": "1.0.0",
+    "enzyme-to-json": "3.6.2",
     "express": "4.15.4",
     "extract-text-webpack-plugin": "3.0.0",
+    "firebase": "4.2.0",
+    "history": "4.7.2",
+    "jest": "20.0.4",
     "moment": "2.18.1",
     "node-sass": "4.14.1",
     "normalize.css": "7.0.0",
+    "numeral": "2.0.6",
+    "raf": "3.3.2",
     "react": "16.0.0",
     "react-addons-shallow-compare": "15.6.0",
     "react-dates": "12.3.0",
@@ -33,7 +39,9 @@
     "react-modal": "2.2.2",
     "react-redux": "5.0.5",
     "react-router-dom": "4.2.2",
+    "react-test-renderer": "16.0.0",
     "redux": "3.7.2",
+    "redux-thunk": "2.2.0",
     "style-loader": "0.18.2",
     "uuid": "3.1.0",
     "validator": "8.0.0",
