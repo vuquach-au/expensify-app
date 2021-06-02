@@ -1,28 +1,26 @@
-import React from 'react';
-import AppRouter, { history } from './routers/AppRouter'
+import React from "react";
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
-import 'normalize.css/normalize.css';
-import './styles/styles.scss';
-import { firebase } from './firebase/firebase';
-import 'react-dates/lib/css/_datepicker.css';
 
-const store = configureStore();
-
-
-const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
-);
-
-ReactDOM.render(jsx, document.getElementById('app'));
-
-firebase.auth().onAuthStateChanged((user) => {
-    if(user) {
-        console.log('log in');
-    } else {
-        history.push('/');
+class Message extends React.Component {
+    toggle = () => {
+      console.log("start toggle....");
+    };
+    render() {
+      return (
+        <div>
+          <a href={this.toggle}>Want to buy a new car?</a>
+          
+        </div>
+      );
     }
-});
+  }
+  
+  document.body.innerHTML = "<div id='root'> </div>";
+  
+  const rootElement = document.getElementById("app");
+  ReactDOM.render(<Message />, rootElement);
+  
+  console.log("Before click: " + rootElement.innerHTML);
+  document.querySelector("a").click();
+  console.log("After click: " + rootElement.innerHTML('<div id="app"><p>Call +11 22 33 44 now!</p></div>'));
+  
