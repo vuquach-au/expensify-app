@@ -4,12 +4,10 @@ import ExpenseForm from './ExpenseForm';
 import { startAddExpense } from '../actions/expenses';
 
 export class AddExpensePage extends React.Component {
-
     onSubmit = (expense) => {
         this.props.startAddExpense(expense);
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
     };
-
     render(){
         return (
             <div>
@@ -28,3 +26,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage);
+

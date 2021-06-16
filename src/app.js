@@ -1,26 +1,45 @@
-import React from "react";
+import React from 'react';
+import AppRouter, { history } from './routers/AppRouter'
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { startSetExpenses } from './actions/expenses';
+import { login, logout } from './actions/auth';
+import configureStore from './store/configureStore';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
+import { firebase } from './firebase/firebase';
+import 'react-dates/lib/css/_datepicker.css';
 
-class Message extends React.Component {
-    toggle = () => {
-      console.log("start toggle....");
-    };
-    render() {
-      return (
-        <div>
-          <a href={this.toggle}>Want to buy a new car?</a>
-          
-        </div>
-      );
+const store = configureStore();
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+);
+
+let hasRendered = false;
+const renderApp = () => {
+    if(!hasRendered) {
+        ReactDOM.render(jsx, document.getElementById('app'));
+        hasRendered = true;
     }
-  }
-  
-  document.body.innerHTML = "<div id='root'> </div>";
-  
-  const rootElement = document.getElementById("app");
-  ReactDOM.render(<Message />, rootElement);
-  
-  console.log("Before click: " + rootElement.innerHTML);
-  document.querySelector("a").click();
-  console.log("After click: " + rootElement.innerHTML('<div id="app"><p>Call +11 22 33 44 now!</p></div>'));
-  
+};
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged((user) => {
+    if(user) {
+        console.log('user logined');
+        console.log('uid', user.uid);
+        store.dispatch(login(user.uid));
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp();
+            if (history.location.pathname === '/') {
+                history.push('/dashboard');
+            }
+        });
+    } else {
+        store.dispatch(logout());
+        renderApp();
+        history.push('/');
+    }
+});
