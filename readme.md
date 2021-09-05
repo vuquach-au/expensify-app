@@ -1,13 +1,8 @@
-#Git
-git init - Create a new git repo
+# App Description:
 
-git status - View the changes to your project code
+This App architecture based on React and Redux using Jest and Enzyme for testing, bundling by Webpack and manipulating data from Firebase database. However, it have not been deployed on Heroku yet.
 
-git add . - Add files to staging area
-
-git commit - Creates new commit with files form staging area
-
-git log - View recents commits
+# This app connecting Git from SSH 
 
 ls -a ~/.ssh - check if ssh have key
 
@@ -18,10 +13,3 @@ ssh-add ~/.ssh/id_rsa
 
 pbcopy < ~/.ssh/id_rsa.pub --> copy private key and paste into GitHub settings.
 
-git remote add origin git@github.com:vuquach-au/expensify-app.git --> add gitHub to current local git.
-
-git remote -v --> check current verbal remote branch
-
-git push -u origin master --> push code from origin to master branch on GitHub
-
-git push -f origin master - push code but replace master branch.
