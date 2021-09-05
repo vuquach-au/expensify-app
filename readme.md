@@ -1,6 +1,8 @@
 # App Description:
 
-This App architecture based on React and Redux using Jest and Enzyme for testing, bundling by Webpack and manipulating data from Firebase database. However, it have not been deployed on Heroku yet.
+A React JS/Redux combination app for managing House Expenses using SCSS/SASS, ES6 and Redux Technology to store and sort/filter data by Date. Engaging with Enzyme for testing, mocking Libraries with Jest.
+
+This App is bundled by Webpack and manipulating data from Firebase database. However, it have not been deployed on Heroku yet.
 
 # This app connecting Git from SSH 
 
